@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     private int score = 0;
-
     public int health = 5;
+    public Text scoreText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SetScoreText();
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Pickup")) {
             score++;
-            Debug.Log($"Score: {score}");
+            SetScoreText();
             other.gameObject.SetActive(false);
         }
         if (other.CompareTag("Trap")) {
@@ -42,5 +43,9 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Goal")) {
             Debug.Log("You win!");
         }
+    }
+
+    void SetScoreText() {
+        scoreText.text = $"Score: {score}";
     }
 }
