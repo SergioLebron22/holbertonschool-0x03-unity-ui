@@ -5,25 +5,23 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Button playButton;
+    public Button quitButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (playButton != null) {
             playButton.onClick.AddListener(PlayMaze);
         }
-        else
-        {
-            Debug.LogError("Play Button not assigned in the Inspector!");
+        if (quitButton != null) {
+            quitButton.onClick.AddListener(QuitMaze);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlayMaze() {
         SceneManager.LoadScene("maze");
+    }
+
+    public void QuitMaze() {
+        Debug.Log("Quit Game");
     }
 }
