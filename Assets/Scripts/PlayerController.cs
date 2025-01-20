@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Game Over!");
             winLoseText.text = "Game Over!";
             winLoseBg.gameObject.SetActive(true);
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(LoadScene(3f));
         }
     }
 
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
             winLoseText.color = Color.black;
             winLoseBg.color = Color.green;
             winLoseBg.gameObject.SetActive(true);
+            StartCoroutine(LoadScene(3f));
         }
     }
 
@@ -61,5 +63,11 @@ public class PlayerController : MonoBehaviour
 
     void SetHealthText() {
         healthText.text = $"Health: {health}";
+    }
+
+    IEnumerator LoadScene(float seconds) {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }
