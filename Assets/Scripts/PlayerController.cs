@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public int health = 5;
     public Text scoreText;
     public Text healthText;
+    public Image winLoseBg;
+    public Text winLoseText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,7 +46,10 @@ public class PlayerController : MonoBehaviour
             SetHealthText();
         }
         if (other.CompareTag("Goal")) {
-            Debug.Log("You win!");
+            winLoseText.text = "You Win!";
+            winLoseText.color = Color.black;
+            winLoseBg.color = Color.green;
+            winLoseBg.gameObject.SetActive(true);
         }
     }
 
