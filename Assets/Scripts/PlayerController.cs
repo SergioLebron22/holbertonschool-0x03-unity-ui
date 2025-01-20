@@ -30,8 +30,10 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement, Space.World);
 
         if (health == 0) {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Debug.Log("Game Over!");
+            winLoseText.text = "Game Over!";
+            winLoseBg.gameObject.SetActive(true);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
